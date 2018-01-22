@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--This is not a model, but a nodeset. -->
+
+<UANodeSet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastModified="2017-07-14T00:00:00Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+  <NamespaceUris><!--Supposedly, the ns number is asigned by this order, so juandavid.univalle/i4o/ is ns=1, fdi is ns=2, DI is ns=3, OPCUA is no ns-->
+    <Uri>http://juandavid.univalle/i4o/Mixer1/</Uri>
+    <Uri>http://juandavid.univalle/i4o/</Uri>
+    <Uri>http://fdi-cooperation.com/OPCUA/FDI5/</Uri>
+    <Uri>http://opcfoundation.org/UA/DI/</Uri>
+    
+  </NamespaceUris>
+  <Models>
+    <Model ModelUri="http://juandavid.univalle/i4o/Mixer1/" Version="0.1" PublicationDate="2017-12-22T00:00:00Z">
+      <RequiredModel ModelUri="http://opcfoundation.org/UA/" Version="1.03" PublicationDate="2013-12-02T00:00:00Z" />
+      <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" Version="1.01" PublicationDate="2012-12-31T00:00:00Z" />
+      <RequiredModel ModelUri="http://fdi-cooperation.com/OPCUA/FDI5/" Version="1.1" PublicationDate="2017-07-14T00:00:00Z" />
+      <RequiredModel ModelUri="http://juandavid.univalle/i4o/" Version="0.1" PublicationDate="2017-12-22T00:00:00Z" />
+    </Model>
+  </Models>
+  <Aliases>
+    <Alias Alias="Boolean">i=1</Alias>
+    <Alias Alias="SByte">i=2</Alias>
+    <Alias Alias="Byte">i=3</Alias>
+    <Alias Alias="Int16">i=4</Alias>
+    <Alias Alias="UInt16">i=5</Alias>
+    <Alias Alias="Int32">i=6</Alias>
+    <Alias Alias="UInt32">i=7</Alias>
+    <Alias Alias="Int64">i=8</Alias>
+    <Alias Alias="UInt64">i=9</Alias>
+    <Alias Alias="Float">i=10</Alias>
+    <Alias Alias="Double">i=11</Alias>
+    <Alias Alias="DateTime">i=13</Alias>
+    <Alias Alias="String">i=12</Alias>
+    <Alias Alias="ByteString">i=15</Alias>
+    <Alias Alias="Guid">i=14</Alias>
+    <Alias Alias="XmlElement">i=16</Alias>
+    <Alias Alias="NodeId">i=17</Alias>
+    <Alias Alias="ExpandedNodeId">i=18</Alias>
+    <Alias Alias="QualifiedName">i=20</Alias>
+    <Alias Alias="LocalizedText">i=21</Alias>
+    <Alias Alias="StatusCode">i=19</Alias>
+    <Alias Alias="Structure">i=22</Alias>
+    <Alias Alias="Number">i=26</Alias>
+    <Alias Alias="Integer">i=27</Alias>
+    <Alias Alias="UInteger">i=28</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+    <Alias Alias="HasProperty">i=46</Alias>
+    <Alias Alias="Organizes">i=35</Alias>
+    <Alias Alias="HasEventSource">i=36</Alias>
+    <Alias Alias="HasNotifier">i=48</Alias>
+    <Alias Alias="HasSubtype">i=45</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+    <Alias Alias="HasModellingRule">i=37</Alias>
+    <Alias Alias="HasEncoding">i=38</Alias>
+    <Alias Alias="HasDescription">i=39</Alias>
+    <Alias Alias="ConnectsTo">ns=4;i=6030</Alias>
+    <Alias Alias="IsOnline">ns=4;i=6031</Alias>
+  </Aliases>
+  
+  <!-- Mixer1 -->
+
+    <UAObject NodeId="ns=1;i=10300" BrowseName="1:Online">
+    <DisplayName>Online</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10057</Reference>
+      <Reference ReferenceType="IsOnline" IsForward="false">ns=2;i=10300</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=10301</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10301" BrowseName="1:SubDevices">
+  	<DisplayName>SubDevices</DisplayName>
+  	<References>
+  	  <Reference ReferenceType="HasTypeDefinition">ns=4;i=1004</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=10302</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=10305</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=10306</Reference>
+	</References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10302" BrowseName="1:RPi">
+    <DisplayName>RPiMx1</DisplayName>
+    <References>
+  	  <Reference ReferenceType="HasTypeDefinition">ns=2;i=10053</Reference>
+  	  <Reference ReferenceType="HasComponent">ns=1;i=10303</Reference>
+  	  <Reference ReferenceType="HasComponent">ns=1;i=10304</Reference>
+  	</References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10303" BrowseName="1:A_CP 2">
+	<DisplayName>A_CP 2</DisplayName>
+	<References>
+	  <Reference ReferenceType="HasTypeDefinition">ns=2;i=10006</Reference>
+	  <Reference ReferenceType="ConnectsTo">ns=2;i=10009</Reference>
+	</References>
+  </UAObject>
+
+  <UAObject	NodeId="ns=1;i=10304" BrowseName="1:B_CP 2">
+	<DisplayName>B_CP 2</DisplayName>
+	<References>
+	  <Reference ReferenceType="HasTypeDefinition">ns=2;i=10007</Reference>
+	</References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10305" BrowseName="1:Piston">
+  	<DisplayName>PistonMx1</DisplayName>
+  	<References>
+  	  <Reference ReferenceType="HasTypeDefinition">ns=2;i=10059</Reference>
+  	</References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10306" BrowseName="1:Motor">
+  	<DisplayName>MotorMx1</DisplayName>
+  	<References>
+  	  <Reference ReferenceType="HasTypeDefinition">ns=2;i=10061</Reference>
+  	</References>
+  </UAObject>
+
+  <UAVariable NodeId="ns=1;i=10307" BrowseName="1:SerialNumber" ParentNodeId="ns=1;i=10317" DataType="String">
+    <DisplayName>SerialNumber</DisplayName>
+    <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10308" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;i=10317" DataType="Int32">
+    <DisplayName>RevisionCounter</DisplayName>
+    <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10309" BrowseName="1:Manufacturer" ParentNodeId="ns=1;i=10317" DataType="LocalizedText">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>Name of the company that manufactured the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10310" BrowseName="1:Model" ParentNodeId="ns=1;i=10317" DataType="LocalizedText">
+    <DisplayName>Model</DisplayName>
+    <Description>Model name of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10311" BrowseName="1:DeviceManual" ParentNodeId="ns=1;i=10317" DataType="String">
+    <DisplayName>DeviceManual</DisplayName>
+    <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10312" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;i=10317" DataType="String">
+    <DisplayName>DeviceRevision</DisplayName>
+    <Description>Overall revision level of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10313" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;i=10317" DataType="String">
+    <DisplayName>SoftwareRevision</DisplayName>
+    <Description>Revision level of the software/firmware of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10314" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;i=10317" DataType="String">
+    <DisplayName>HardwareRevision</DisplayName>
+    <Description>Revision level of the hardware of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10315" BrowseName="1:DeviceClass" ParentNodeId="ns=1;i=10317" DataType="String">
+    <DisplayName>DeviceClass</DisplayName>
+    <Description>Indicates in which domain or for what purpose a device is used.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+    <UAVariable NodeId="ns=1;i=10316" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;i=10317" DataType="ns=4;i=6244">
+    <DisplayName>DeviceHealth</DisplayName>
+    <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  
+  <UAObject NodeId="ns=1;i=10317" BrowseName="1:ParameterSet" ParentNodeId="ns=1;i=10300">
+    <DisplayName>ParameterSet</DisplayName>
+    <Description>Flat list of Parameters</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10318" BrowseName="1:Identification" ParentNodeId="ns=1;i=10300">
+    <DisplayName>Identification</DisplayName>
+    <Description>Used to organize parameters for identification of this TopologyElement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=1005</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10307</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10308</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10309</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10310</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10311</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10312</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10313</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10314</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10315</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10316</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10319" BrowseName="1:ImageSet" ParentNodeId="ns=1;i=10300">
+    <DisplayName>ImageSet</DisplayName>
+    <Description>Organizes images that are used within UIElements.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10320" BrowseName="1:DeviceTypeImage" ParentNodeId="ns=1;i=10300">
+    <DisplayName>DeviceTypeImage</DisplayName>
+    <Description>Organizes pictures of the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10321" BrowseName="1:Documentation" ParentNodeId="ns=1;i=10300">
+    <DisplayName>Documentation</DisplayName>
+    <Description>Organizes documents for the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10322" BrowseName="1:ProtocolSupport" ParentNodeId="ns=1;i=10300">
+    <DisplayName>ProtocolSupport</DisplayName>
+    <Description>Protocol-specific files for the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10323" BrowseName="1:ActionSet">
+    <DisplayName>ActionSet</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=3;i=21</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=184</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=187</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=190</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10324" BrowseName="1:Lock" ParentNodeId="ns=1;i=10300">
+    <DisplayName>Lock</DisplayName>
+    <Description>Used to lock the Network.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=6388</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10325</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10326</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10327</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10328</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6299</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6302</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6304</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6306</Reference>
+    </References>
+  </UAObject>
+
+  <UAVariable NodeId="ns=1;i=10325" BrowseName="1:Locked" ParentNodeId="ns=1;i=10324" DataType="Boolean">
+    <DisplayName>Locked</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10324</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10326" BrowseName="1:LockingClient" ParentNodeId="ns=1;i=10324" DataType="String">
+    <DisplayName>LockingClient</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10324</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10327" BrowseName="1:LockingUser" ParentNodeId="ns=1;i=10324" DataType="String">
+    <DisplayName>LockingUser</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10324</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10328" BrowseName="1:RemainingLockTime" ParentNodeId="ns=1;i=10324" DataType="i=290">
+    <DisplayName>RemainingLockTime</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10324</Reference>
+    </References>
+  </UAVariable>
+
+
+  <UAObject NodeId="ns=1;i=10329" BrowseName="1:Servicing" ParentNodeId="ns=1;i=10300">
+    <DisplayName>Servicing</DisplayName>
+    <Description>Used to organize parameters for regarding services</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=1005</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10300</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10330</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10331</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10332</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10333</Reference>
+    </References>
+  </UAObject>
+  
+  <UAVariable NodeId="ns=1;i=10330" BrowseName="1:OfferedServices" ParentNodeId="ns=1;i=10317" DataType="String" ValueRank="1" ArrayDimensions="10">
+    <DisplayName>OfferedServices</DisplayName>
+    <Description>List of services offered by this device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10331" BrowseName="1:OfflineServices" ParentNodeId="ns=1;i=10317" DataType="String" ValueRank="1">
+    <DisplayName>OfflineServices</DisplayName>
+    <Description>List of services that cannot be performed due to maintenance or request.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10332" BrowseName="1:UsesBeforeMaintenance" ParentNodeId="ns=1;i=10317" DataType="Int32" ValueRank="1" ArrayDimensions="2">
+    <DisplayName>UsesBeforeMaintenance</DisplayName>
+    <Description>This value decreases each time the device executes an action.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10333" BrowseName="1:NowAttending" ParentNodeId="ns=1;i=10317" DataType="Int32">
+    <DisplayName>NowAttending</DisplayName>
+    <Description>ID of the product being attended by the machine.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10317</Reference>
+    </References>
+  </UAVariable>
+  
+  <UAObject NodeId="ns=1;i=10334" BrowseName="1:AlternatingMixing">
+    <DisplayName>AlternatingMixing</DisplayName>
+    <Description>It waits for the transport system to elevate the painting, then, it rotates the motor forward and backwards to create an alternating mixing (Like when you mix the chocolate).</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10323</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10335" BrowseName="1:ConstantMixing">
+    <DisplayName>ConstantMixing</DisplayName>
+    <Description>It waits for the transport system to elevate the painting, then, it rotates the motor in one direction.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10323</Reference>
+    </References>
+  </UAObject>
+
+<!--Pistón 305-->
+  <UAVariable NodeId="ns=1;i=10336" BrowseName="1:SerialNumber" ParentNodeId="ns=1;i=10346" DataType="String">
+    <DisplayName>SerialNumber</DisplayName>
+    <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10337" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;i=10346" DataType="Int32">
+    <DisplayName>RevisionCounter</DisplayName>
+    <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10338" BrowseName="1:Manufacturer" ParentNodeId="ns=1;i=10346" DataType="LocalizedText">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>Name of the company that manufactured the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10339" BrowseName="1:Model" ParentNodeId="ns=1;i=10346" DataType="LocalizedText">
+    <DisplayName>Model</DisplayName>
+    <Description>Model name of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10340" BrowseName="1:DeviceManual" ParentNodeId="ns=1;i=10346" DataType="String">
+    <DisplayName>DeviceManual</DisplayName>
+    <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10341" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;i=10346" DataType="String">
+    <DisplayName>DeviceRevision</DisplayName>
+    <Description>Overall revision level of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10342" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;i=10346" DataType="String">
+    <DisplayName>SoftwareRevision</DisplayName>
+    <Description>Revision level of the software/firmware of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10343" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;i=10346" DataType="String">
+    <DisplayName>HardwareRevision</DisplayName>
+    <Description>Revision level of the hardware of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10344" BrowseName="1:DeviceClass" ParentNodeId="ns=1;i=10346" DataType="String">
+    <DisplayName>DeviceClass</DisplayName>
+    <Description>Indicates in which domain or for what purpose a device is used.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+    <UAVariable NodeId="ns=1;i=10345" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;i=10346" DataType="ns=4;i=6244">
+    <DisplayName>DeviceHealth</DisplayName>
+    <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  
+  <UAObject NodeId="ns=1;i=10346" BrowseName="1:ParameterSet" ParentNodeId="ns=1;i=10305">
+    <DisplayName>ParameterSet</DisplayName>
+    <Description>Flat list of Parameters</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10347" BrowseName="1:Identification" ParentNodeId="ns=1;i=10305">
+    <DisplayName>Identification</DisplayName>
+    <Description>Used to organize parameters for identification of this TopologyElement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=1005</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10336</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10337</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10338</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10339</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10340</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10341</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10342</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10343</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10344</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10345</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10348" BrowseName="1:ImageSet" ParentNodeId="ns=1;i=10305">
+    <DisplayName>ImageSet</DisplayName>
+    <Description>Organizes images that are used within UIElements.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10349" BrowseName="1:DeviceTypeImage" ParentNodeId="ns=1;i=10305">
+    <DisplayName>DeviceTypeImage</DisplayName>
+    <Description>Organizes pictures of the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10350" BrowseName="1:Documentation" ParentNodeId="ns=1;i=10305">
+    <DisplayName>Documentation</DisplayName>
+    <Description>Organizes documents for the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10351" BrowseName="1:ProtocolSupport" ParentNodeId="ns=1;i=10305">
+    <DisplayName>ProtocolSupport</DisplayName>
+    <Description>Protocol-specific files for the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10352" BrowseName="1:ActionSet">
+    <DisplayName>ActionSet</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=3;i=21</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=184</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=187</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=190</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10353" BrowseName="1:Lock" ParentNodeId="ns=1;i=10305">
+    <DisplayName>Lock</DisplayName>
+    <Description>Used to lock the Network.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=6388</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10354</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10355</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10356</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10357</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6299</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6302</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6304</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6306</Reference>
+    </References>
+  </UAObject>
+
+  <UAVariable NodeId="ns=1;i=10354" BrowseName="1:Locked" ParentNodeId="ns=1;i=10353" DataType="Boolean">
+    <DisplayName>Locked</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10353</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10355" BrowseName="1:LockingClient" ParentNodeId="ns=1;i=10353" DataType="String">
+    <DisplayName>LockingClient</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10353</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10356" BrowseName="1:LockingUser" ParentNodeId="ns=1;i=10353" DataType="String">
+    <DisplayName>LockingUser</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10353</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10357" BrowseName="1:RemainingLockTime" ParentNodeId="ns=1;i=10353" DataType="i=290">
+    <DisplayName>RemainingLockTime</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10353</Reference>
+    </References>
+  </UAVariable>
+
+
+  <UAObject NodeId="ns=1;i=10358" BrowseName="1:Servicing" ParentNodeId="ns=1;i=10305">
+    <DisplayName>Servicing</DisplayName>
+    <Description>Used to organize parameters for regarding services</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=1005</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10305</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10359</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10360</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10361</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10362</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10365</Reference>
+    </References>
+  </UAObject>
+  
+  <UAVariable NodeId="ns=1;i=10359" BrowseName="1:OfferedServices" ParentNodeId="ns=1;i=10346" DataType="String" ValueRank="1" ArrayDimensions="10">
+    <DisplayName>OfferedServices</DisplayName>
+    <Description>List of services offered by this device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10360" BrowseName="1:OfflineServices" ParentNodeId="ns=1;i=10346" DataType="String" ValueRank="1">
+    <DisplayName>OfflineServices</DisplayName>
+    <Description>List of services that cannot be performed due to maintenance or request.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10361" BrowseName="1:UsesBeforeMaintenance" ParentNodeId="ns=1;i=10346" DataType="Int32" ValueRank="1" ArrayDimensions="2">
+    <DisplayName>UsesBeforeMaintenance</DisplayName>
+    <Description>This value decreases each time the device executes an action.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10362" BrowseName="1:NowAttending" ParentNodeId="ns=1;i=10346" DataType="Int32">
+    <DisplayName>NowAttending</DisplayName>
+    <Description>ID of the product being attended by the machine.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  
+  <UAObject NodeId="ns=1;i=10363" BrowseName="1:Extend">
+    <DisplayName>Extend</DisplayName>
+    <Description>Extend the piston.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10352</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10364" BrowseName="1:Contract">
+    <DisplayName>Contract</DisplayName>
+    <Description>Contracts the piston.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10352</Reference>
+    </References>
+  </UAObject>
+
+  <UAVariable NodeId="ns=1;i=10365" BrowseName="1:IsExtended" ParentNodeId="ns=1;i=10346" DataType="Boolean">
+    <DisplayName>IsExtended</DisplayName>
+    <Description>If TRUE, piston is extended.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10346</Reference>
+    </References>
+  </UAVariable>
+  
+  <!--Motor 306-->
+
+  <UAVariable NodeId="ns=1;i=10366" BrowseName="1:SerialNumber" ParentNodeId="ns=1;i=10376" DataType="String">
+    <DisplayName>SerialNumber</DisplayName>
+    <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10367" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;i=10376" DataType="Int32">
+    <DisplayName>RevisionCounter</DisplayName>
+    <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10368" BrowseName="1:Manufacturer" ParentNodeId="ns=1;i=10376" DataType="LocalizedText">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>Name of the company that manufactured the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10369" BrowseName="1:Model" ParentNodeId="ns=1;i=10376" DataType="LocalizedText">
+    <DisplayName>Model</DisplayName>
+    <Description>Model name of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10370" BrowseName="1:DeviceManual" ParentNodeId="ns=1;i=10376" DataType="String">
+    <DisplayName>DeviceManual</DisplayName>
+    <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10371" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;i=10376" DataType="String">
+    <DisplayName>DeviceRevision</DisplayName>
+    <Description>Overall revision level of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10372" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;i=10376" DataType="String">
+    <DisplayName>SoftwareRevision</DisplayName>
+    <Description>Revision level of the software/firmware of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10373" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;i=10376" DataType="String">
+    <DisplayName>HardwareRevision</DisplayName>
+    <Description>Revision level of the hardware of the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10374" BrowseName="1:DeviceClass" ParentNodeId="ns=1;i=10376" DataType="String">
+    <DisplayName>DeviceClass</DisplayName>
+    <Description>Indicates in which domain or for what purpose a device is used.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+    <UAVariable NodeId="ns=1;i=10375" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;i=10376" DataType="ns=4;i=6244">
+    <DisplayName>DeviceHealth</DisplayName>
+    <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  
+  <UAObject NodeId="ns=1;i=10376" BrowseName="1:ParameterSet" ParentNodeId="ns=1;i=10306">
+    <DisplayName>ParameterSet</DisplayName>
+    <Description>Flat list of Parameters</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10377" BrowseName="1:Identification" ParentNodeId="ns=1;i=10306">
+    <DisplayName>Identification</DisplayName>
+    <Description>Used to organize parameters for identification of this TopologyElement</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=1005</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10366</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10367</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10368</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10369</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10370</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10371</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10372</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10373</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10374</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10375</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10378" BrowseName="1:ImageSet" ParentNodeId="ns=1;i=10306">
+    <DisplayName>ImageSet</DisplayName>
+    <Description>Organizes images that are used within UIElements.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10379" BrowseName="1:DeviceTypeImage" ParentNodeId="ns=1;i=10306">
+    <DisplayName>DeviceTypeImage</DisplayName>
+    <Description>Organizes pictures of the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+    </References>
+  </UAObject>
+  
+  <UAObject NodeId="ns=1;i=10380" BrowseName="1:Documentation" ParentNodeId="ns=1;i=10306">
+    <DisplayName>Documentation</DisplayName>
+    <Description>Organizes documents for the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10381" BrowseName="1:ProtocolSupport" ParentNodeId="ns=1;i=10306">
+    <DisplayName>ProtocolSupport</DisplayName>
+    <Description>Protocol-specific files for the device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10382" BrowseName="1:ActionSet">
+    <DisplayName>ActionSet</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=3;i=21</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=184</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=187</Reference>
+      <Reference ReferenceType="HasComponent">ns=3;i=190</Reference>
+    </References>
+  </UAObject>
+
+  <UAObject NodeId="ns=1;i=10383" BrowseName="1:Lock" ParentNodeId="ns=1;i=10306">
+    <DisplayName>Lock</DisplayName>
+    <Description>Used to lock the Network.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=6388</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10384</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10385</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10386</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=10387</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6299</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6302</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6304</Reference>
+      <Reference ReferenceType="HasComponent">ns=4;i=6306</Reference>
+    </References>
+  </UAObject>
+
+  <UAVariable NodeId="ns=1;i=10384" BrowseName="1:Locked" ParentNodeId="ns=1;i=10383" DataType="Boolean">
+    <DisplayName>Locked</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10383</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10385" BrowseName="1:LockingClient" ParentNodeId="ns=1;i=10383" DataType="String">
+    <DisplayName>LockingClient</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10383</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10386" BrowseName="1:LockingUser" ParentNodeId="ns=1;i=10383" DataType="String">
+    <DisplayName>LockingUser</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10383</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10387" BrowseName="1:RemainingLockTime" ParentNodeId="ns=1;i=10383" DataType="i=290">
+    <DisplayName>RemainingLockTime</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=10383</Reference>
+    </References>
+  </UAVariable>
+
+
+  <UAObject NodeId="ns=1;i=10388" BrowseName="1:Servicing" ParentNodeId="ns=1;i=10306">
+    <DisplayName>Servicing</DisplayName>
+    <Description>Used to organize parameters for regarding services</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=4;i=1005</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10306</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10389</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10390</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10391</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10392</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10394</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=10395</Reference>
+    </References>
+  </UAObject>
+  
+  <UAVariable NodeId="ns=1;i=10389" BrowseName="1:OfferedServices" ParentNodeId="ns=1;i=10376" DataType="String" ValueRank="1" ArrayDimensions="10">
+    <DisplayName>OfferedServices</DisplayName>
+    <Description>List of services offered by this device.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10390" BrowseName="1:OfflineServices" ParentNodeId="ns=1;i=10376" DataType="String" ValueRank="1">
+    <DisplayName>OfflineServices</DisplayName>
+    <Description>List of services that cannot be performed due to maintenance or request.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10391" BrowseName="1:UsesBeforeMaintenance" ParentNodeId="ns=1;i=10376" DataType="Int32" ValueRank="1" ArrayDimensions="2">
+    <DisplayName>UsesBeforeMaintenance</DisplayName>
+    <Description>This value decreases each time the device executes an action.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10392" BrowseName="1:NowAttending" ParentNodeId="ns=1;i=10376" DataType="Int32">
+    <DisplayName>NowAttending</DisplayName>
+    <Description>ID of the product being attended by the machine.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+  
+  <UAObject NodeId="ns=1;i=10393" BrowseName="1:Run">
+    <DisplayName>Run</DisplayName>
+    <Description>Turn on/off the motor. Inputs are direction, on/off, and if the motor is capable, speed.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10382</Reference>
+    </References>
+  </UAObject>
+
+  <UAVariable NodeId="ns=1;i=10394" BrowseName="1:Duty" ParentNodeId="ns=1;i=10376" DataType="Float">
+    <DisplayName>Duty</DisplayName>
+    <Description>Duty %</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=1;i=10395" BrowseName="1:IsRunningForward" ParentNodeId="ns=1;i=10376" DataType="Boolean">
+    <DisplayName>IsRunningForward</DisplayName>
+    <Description>If TRUE, the vector defining the torque of the motor is pointing outwards.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=10376</Reference>
+    </References>
+  </UAVariable>
+</UANodeSet>
