@@ -2,7 +2,7 @@
 <!--This is not a model, but a nodeset. -->
 
 <UANodeSet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastModified="2017-07-14T00:00:00Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
-  <NamespaceUris><!--Supposedly, the ns number is asigned by this order, so juandavid.univalle/i4o/ is ns=1, fdi is ns=2, DI is ns=3, OPCUA is no ns-->
+  <NamespaceUris>
     <Uri>http://juandavid.univalle/i4o/Mixer1/</Uri>
     <Uri>http://juandavid.univalle/i4o/</Uri>
     <Uri>http://fdi-cooperation.com/OPCUA/FDI5/</Uri>
@@ -62,7 +62,7 @@
   <UAObject NodeId="ns=1;s=D.Mx1.Online" BrowseName="1:Online">
     <DisplayName>Online</DisplayName>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10057</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.D.MezcladoraType</Reference>
       <Reference ReferenceType="IsOnline" IsForward="false">ns=2;s=Dev.Mixer1</Reference>
       <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.SubDevices</Reference>
     </References>
@@ -71,7 +71,7 @@
   <UAObject NodeId="ns=1;s=D.Mx1.O.SubDevices" BrowseName="1:SubDevices">
     <DisplayName>SubDevices</DisplayName>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=4;i=1004</Reference>
+	  <Reference ReferenceType="HasTypeDefinition">ns=4;i=1004</Reference>
       <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.RPi</Reference>
       <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.Piston</Reference>
       <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.Motor</Reference>
@@ -81,7 +81,7 @@
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.RPi" BrowseName="1:RPi">
     <DisplayName>RPiMx1</DisplayName>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10053</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.D.RPiType</Reference>
       <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.RPi.A_CP2</Reference>
       <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.RPi.B_CP2</Reference>
     </References>
@@ -90,29 +90,29 @@
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.RPi.A_CP2" BrowseName="1:A_CP 2">
     <DisplayName>A_CP 2</DisplayName>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10005</Reference>
-      <Reference ReferenceType="ConnectsTo">ns=2;i=10009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.CP.LANConnectionPointType</Reference>
+      <Reference ReferenceType="ConnectsTo">ns=2;s=N.A_LAN</Reference>
     </References>
   </UAObject>
 
   <UAObject	NodeId="ns=1;s=D.Mx1.O.S.RPi.B_CP2" BrowseName="1:B_CP 2">
     <DisplayName>B_CP 2</DisplayName>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10007</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.CP.WLANConnectionPointType</Reference>
     </References>
   </UAObject>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.Piston" BrowseName="1:Piston">
     <DisplayName>PistonMx1</DisplayName>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10059</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.D.PistonType</Reference>
     </References>
   </UAObject>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.Motor" BrowseName="1:Motor">
     <DisplayName>MotorMx1</DisplayName>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10061</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.D.MotorType</Reference>
     </References>
   </UAObject>
 
@@ -268,11 +268,246 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=21</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.Online</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=184</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=187</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=190</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.AS.InvokeAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.AS.RespondAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.AS.AbortAction</Reference>
     </References>
   </UAObject>
+
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.AS.InvokeAction" BrowseName="1:InvokeAction" ParentNodeId="ns=1;s=D.Mx1.O.ActionSet" MethodDeclarationId="ns=3;i=22">
+    <DisplayName>InvokeAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.AS.InvokeAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.AS.InvokeAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.AS.InvokeAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionName</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>MethodArguments</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.AS.InvokeAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>InvokeActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.AS.RespondAction" BrowseName="1:RespondAction" ParentNodeId="ns=1;s=D.Mx1.O.ActionSet" MethodDeclarationId="ns=3;i=25">
+    <DisplayName>RespondAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.AS.RespondAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.AS.RespondAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.AS.RespondAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Response</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.AS.RespondAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>RespondActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.AS.AbortAction" BrowseName="1:AbortAction" ParentNodeId="ns=1;s=D.Mx1.O.ActionSet" MethodDeclarationId="ns=3;i=28">
+    <DisplayName>AbortAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.AS.AbortAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.AS.AbortAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.AS.AbortAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.AS.AbortAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>AbortActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.Lock" BrowseName="1:Lock" ParentNodeId="ns=1;s=D.Mx1.Online">
     <DisplayName>Lock</DisplayName>
@@ -284,10 +519,10 @@
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.LockingClient</Reference>
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.LockingUser</Reference>
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.RemainingLockTime</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6299</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6302</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6304</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6306</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.Lock.InitLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.Lock.RenewLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.Lock.ExitLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.Lock.BreakLock</Reference>
     </References>
   </UAObject>
 
@@ -323,7 +558,170 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.Lock</Reference>
     </References>
   </UAVariable>
-
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.Lock.InitLock" BrowseName="1:InitLock" ParentNodeId="ns=1;s=D.Mx1.O.Lock" MethodDeclarationId="ns=4;i=6393">
+    <DisplayName>InitLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.InitLock.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.InitLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.Lock.InitLock.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.Lock.InitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.Lock.InitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>CurrentContext</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.Lock.InitLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.Lock.InitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.Lock.InitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>InitLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.Lock.RenewLock" BrowseName="1:RenewLock" ParentNodeId="ns=1;s=D.Mx1.O.Lock" MethodDeclarationId="ns=4;i=6396">
+    <DisplayName>RenewLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.RenewLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.Lock.RenewLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.Lock.RenewLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.Lock.RenewLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>RenewLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.Lock.ExitLock" BrowseName="1:ExitLock" ParentNodeId="ns=1;s=D.Mx1.O.Lock" MethodDeclarationId="ns=4;i=6398">
+    <DisplayName>ExitLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.ExitLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.Lock.ExitLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.Lock.ExitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.Lock.ExitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ExitLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.Lock.BreakLock" BrowseName="1:BreakLock" ParentNodeId="ns=1;s=D.Mx1.O.Lock" MethodDeclarationId="ns=4;i=6400">
+    <DisplayName>BreakLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.Lock.BreakLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.Lock.BreakLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.Lock.BreakLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.Lock.BreakLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>BreakLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.Servicing" BrowseName="1:Servicing" ParentNodeId="ns=1;s=D.Mx1.Online">
     <DisplayName>Servicing</DisplayName>
@@ -375,7 +773,7 @@
     <DisplayName>AlternatingMixing</DisplayName>
     <Description>It waits for the transport system to elevate the painting, then, it rotates the motor forward and backwards to create an alternating mixing (Like when you mix the chocolate).</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.ActionSet</Reference>
     </References>
   </UAObject>
@@ -384,7 +782,7 @@
     <DisplayName>ConstantMixing</DisplayName>
     <Description>It waits for the transport system to elevate the painting, then, it rotates the motor in one direction.</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.ActionSet</Reference>
     </References>
   </UAObject>
@@ -540,11 +938,246 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=21</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.Piston</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=184</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=187</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=190</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.P.AS.InvokeAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.P.AS.RespondAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.P.AS.AbortAction</Reference>
     </References>
   </UAObject>
+
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.P.AS.InvokeAction" BrowseName="1:InvokeAction" ParentNodeId="ns=1;s=D.Mx1.O.S.P.ActionSet" MethodDeclarationId="ns=3;i=22">
+    <DisplayName>InvokeAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.AS.InvokeAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.AS.InvokeAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.AS.InvokeAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionName</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>MethodArguments</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.AS.InvokeAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>InvokeActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.P.AS.RespondAction" BrowseName="1:RespondAction" ParentNodeId="ns=1;s=D.Mx1.O.S.P.ActionSet" MethodDeclarationId="ns=3;i=25">
+    <DisplayName>RespondAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.AS.RespondAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.AS.RespondAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.AS.RespondAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Response</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.AS.RespondAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>RespondActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.P.AS.AbortAction" BrowseName="1:AbortAction" ParentNodeId="ns=1;s=D.Mx1.O.S.P.ActionSet" MethodDeclarationId="ns=3;i=28">
+    <DisplayName>AbortAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.AS.AbortAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.AS.AbortAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.AS.AbortAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.AS.AbortAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>AbortActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.P.Lock" BrowseName="1:Lock" ParentNodeId="ns=1;s=D.Mx1.O.S.Piston">
     <DisplayName>Lock</DisplayName>
@@ -556,10 +1189,10 @@
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.LockingClient</Reference>
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.LockingUser</Reference>
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.RemainingLockTime</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6299</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6302</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6304</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6306</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.P.Lock.InitLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.P.Lock.RenewLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.P.Lock.ExitLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.P.Lock.BreakLock</Reference>
     </References>
   </UAObject>
 
@@ -591,7 +1224,170 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock</Reference>
     </References>
   </UAVariable>
-
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.P.Lock.InitLock" BrowseName="1:InitLock" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock" MethodDeclarationId="ns=4;i=6393">
+    <DisplayName>InitLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.InitLock.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.InitLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.Lock.InitLock.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock.InitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock.InitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>CurrentContext</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.Lock.InitLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock.InitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock.InitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>InitLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.P.Lock.RenewLock" BrowseName="1:RenewLock" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock" MethodDeclarationId="ns=4;i=6396">
+    <DisplayName>RenewLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.RenewLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.Lock.RenewLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock.RenewLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock.RenewLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>RenewLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.P.Lock.ExitLock" BrowseName="1:ExitLock" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock" MethodDeclarationId="ns=4;i=6398">
+    <DisplayName>ExitLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.ExitLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.Lock.ExitLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock.ExitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock.ExitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ExitLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.P.Lock.BreakLock" BrowseName="1:BreakLock" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock" MethodDeclarationId="ns=4;i=6400">
+    <DisplayName>BreakLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.P.Lock.BreakLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.P.Lock.BreakLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.P.Lock.BreakLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.P.Lock.BreakLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>BreakLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.P.Servicing" BrowseName="1:Servicing" ParentNodeId="ns=1;s=D.Mx1.O.S.Piston">
     <DisplayName>Servicing</DisplayName>
@@ -644,7 +1440,7 @@
     <DisplayName>Extend</DisplayName>
     <Description>Extend the piston.</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.ActionSet</Reference>
     </References>
   </UAObject>
@@ -653,7 +1449,7 @@
     <DisplayName>Contract</DisplayName>
     <Description>Contracts the piston.</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.P.ActionSet</Reference>
     </References>
   </UAObject>
@@ -819,11 +1615,246 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=21</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.Motor</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=184</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=187</Reference>
-      <Reference ReferenceType="HasComponent">ns=3;i=190</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.M.AS.InvokeAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.M.AS.RespondAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.M.AS.AbortAction</Reference>
     </References>
   </UAObject>
+
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.M.AS.InvokeAction" BrowseName="1:InvokeAction" ParentNodeId="ns=1;s=D.Mx1.O.S.M.ActionSet" MethodDeclarationId="ns=3;i=22">
+    <DisplayName>InvokeAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.AS.InvokeAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.AS.InvokeAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.AS.InvokeAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionName</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>MethodArguments</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.AS.InvokeAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>InvokeActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.M.AS.RespondAction" BrowseName="1:RespondAction" ParentNodeId="ns=1;s=D.Mx1.O.S.M.ActionSet" MethodDeclarationId="ns=3;i=25">
+    <DisplayName>RespondAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.AS.RespondAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.AS.RespondAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.AS.RespondAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Response</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.AS.RespondAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>RespondActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.M.AS.AbortAction" BrowseName="1:AbortAction" ParentNodeId="ns=1;s=D.Mx1.O.S.M.ActionSet" MethodDeclarationId="ns=3;i=28">
+    <DisplayName>AbortAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.AS.AbortAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.AS.AbortAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.AS.AbortAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.AS.AbortAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>AbortActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.M.Lock" BrowseName="1:Lock" ParentNodeId="ns=1;s=D.Mx1.O.S.Motor">
     <DisplayName>Lock</DisplayName>
@@ -835,10 +1866,10 @@
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.LockingClient</Reference>
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.LockingUser</Reference>
       <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.RemainingLockTime</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6299</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6302</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6304</Reference>
-      <Reference ReferenceType="HasComponent">ns=4;i=6306</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.M.Lock.InitLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.M.Lock.RenewLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.M.Lock.ExitLock</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.Mx1.O.S.M.Lock.BreakLock</Reference>
     </References>
   </UAObject>
 
@@ -870,7 +1901,170 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock</Reference>
     </References>
   </UAVariable>
-
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.M.Lock.InitLock" BrowseName="1:InitLock" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock" MethodDeclarationId="ns=4;i=6393">
+    <DisplayName>InitLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.InitLock.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.InitLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.Lock.InitLock.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock.InitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock.InitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>CurrentContext</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.Lock.InitLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock.InitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock.InitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>InitLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.M.Lock.RenewLock" BrowseName="1:RenewLock" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock" MethodDeclarationId="ns=4;i=6396">
+    <DisplayName>RenewLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.RenewLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.Lock.RenewLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock.RenewLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock.RenewLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>RenewLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.M.Lock.ExitLock" BrowseName="1:ExitLock" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock" MethodDeclarationId="ns=4;i=6398">
+    <DisplayName>ExitLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.ExitLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.Lock.ExitLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock.ExitLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock.ExitLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ExitLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.Mx1.O.S.M.Lock.BreakLock" BrowseName="1:BreakLock" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock" MethodDeclarationId="ns=4;i=6400">
+    <DisplayName>BreakLock</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.Mx1.O.S.M.Lock.BreakLock.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.Mx1.O.S.M.Lock.BreakLock.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.Mx1.O.S.M.Lock.BreakLock" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.O.S.M.Lock.BreakLock</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>BreakLockStatus</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.Mx1.O.S.M.Servicing" BrowseName="1:Servicing" ParentNodeId="ns=1;s=D.Mx1.O.S.Motor">
     <DisplayName>Servicing</DisplayName>
@@ -924,7 +2118,7 @@
     <DisplayName>Run</DisplayName>
     <Description>Turn on/off the motor. Inputs are direction, on/off, and if the motor is capable, speed.</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;i=10016</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.O.S.M.ActionSet</Reference>
     </References>
   </UAObject>
