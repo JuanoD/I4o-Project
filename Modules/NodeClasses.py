@@ -1,5 +1,6 @@
 from opcua import ua
 
+
 class SubHandler(object):
     """
     Subscription Handler. To receive events from server for a subscription.
@@ -8,7 +9,6 @@ class SubHandler(object):
 
     def __init__(self, obj):
         self.obj = obj
-
 
     def datachange_notification(self, node, val, data):
         # print("Python: New data change event", node, val, data)
@@ -54,25 +54,57 @@ class UaObject(object):
             self.nodes[attr].set_value(getattr(self, attr))
 
 
+class DeviceDi(UaObject):
+    """
+    Device class for testing childs
+    """
+    def __init__(self, opcua_server, ua_node, dev_type):
+        self.me = ua_node
+        self.idx = self.me.nodeid.NamespaceIndex
+        # properties and variables; must mirror UA model (based on browsename!)
+        self.DeviceClass = self.me.get_child(["{}:DeviceClass".format(self.idx)]).get_value()
+        self.DeviceHealth = self.me.get_child(["{}:DeviceHealth".format(self.idx)]).get_value()
+        self.DeviceManual = self.me.get_child(["{}:DeviceManual".format(self.idx)]).get_value()
+        self.DeviceRevision = self.me.get_child(["{}:DeviceRevision".format(self.idx)]).get_value()
+        self.HardwareRevision = self.me.get_child(["{}:HardwareRevision".format(self.idx)]).get_value()
+        self.Manufacturer = self.me.get_child(["{}:Manufacturer".format(self.idx)]).get_value()
+        self.Model = self.me.get_child(["{}:Model".format(self.idx)]).get_value()
+        self.RevisionCounter = self.me.get_child(["{}:RevisionCounter".format(self.idx)]).get_value()
+        self.SerialNumber = self.me.get_child(["{}:SerialNumber".format(self.idx)]).get_value()
+        self.SoftwareRevision = self.me.get_child(["{}:SoftwareRevision".format(self.idx)]).get_value()
+
+        super().__init__(opcua_server, ua_node)
+
+        if dev_type is "ST":
+            self.ParameterSet = SistemaTransporte(
+                opcua_server,
+                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
+            )
+        elif dev_type is "Mx":  # TODO
+            self.ParameterSet = Mixer(
+                opcua_server,
+                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
+            )
+        elif dev_type is "M":  # TODO
+            self.ParameterSet = Motor(
+                opcua_server,
+                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
+            )
+        elif dev_type is "P":  # TODO
+            self.ParameterSet = Pistn(
+                opcua_server,
+                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
+            )
+        else:
+            pass
+
+
 class DiDevicesParameterSet(UaObject):
     """
     Definition of OPC UA object which represents a object to be mirrored in python
     This class mirrors it's UA counterpart and semi-configures itself according to the UA model (generally from XML)
     """
     def __init__(self, opcua_server, ua_node):
-
-        # properties and variables; must mirror UA model (based on browsename!)
-        self.DeviceClass = 0
-        self.DeviceHealth = 0
-        self.DeviceManual = 0
-        self.DeviceRevision = 0
-        self.HardwareRevision = 0
-        self.Manufacturer = 0
-        self.Model = 0
-        self.RevisionCounter = 0
-        self.SerialNumber = 0
-        self.SoftwareRevision = 0
-
         # init the UaObject super class to connect the python object to the UA object
         super().__init__(opcua_server, ua_node)
 
@@ -85,3 +117,11 @@ class DiDevicesParameterSet(UaObject):
         # ADD CUSTOM OBJECT INITIALIZATION BELOW
         # find children by type and instantiate them as sub-objects of this class
         # NOT PART OF THIS EXAMPLE
+
+
+class SistemaTransporte(DiDevicesParameterSet):
+    def __init__(self, opcua_server, ua_node):
+        self.me = ua_node
+        self.idx = self.me.nodeid.NamespaceIndex
+        self.OnlineServices = self.me.get_child(["{}:OfferedServices".format(self.idx)]).get_value()
+        super().__init__(opcua_server, ua_node)
