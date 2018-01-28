@@ -348,92 +348,122 @@
   </UAObject>
 
   <!-- Cosas del sistema de transporte -->
-  <UAVariable NodeId="ns=1;s=D.ST.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=Dev.SisTran" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
     <Value>
-      <String xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">Cualquiera</String>
+      <String>Cualquiera</String>
     </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.ST.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=Dev.SisTran" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <Int32>0</Int32>
+    </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.ST.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=Dev.SisTran" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <LocalizedText>
+        <Locale/>
+        <Text>Fabricado por Juan</Text>
+      </LocalizedText>
+    </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.ST.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=Dev.SisTran" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <LocalizedText>
+        <Locale/>
+        <Text>AdmShell Humano</Text>
+      </LocalizedText>
+    </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=Dev.SisTran" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <String>Inicie sesión en la página web para recibir instrucciones.</String>
+    </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=Dev.SisTran" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <String>WIP</String>
+    </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=Dev.SisTran" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <String>WIP</String>
+    </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=Dev.SisTran" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
     <Value>
-      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">Primera :D</String>
+      <String>WIP</String>
     </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=Dev.SisTran" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <String>27-24-25-02 Visualization software [AKE561015]</String>
+    </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.ST.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=Dev.SisTran" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="Organizes" IsForward="false">ns=1;s=D.ST.Identification</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.SisTran</Reference>
     </References>
+    <Value>
+      <Int32 xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">0</Int32>
+    </Value>
   </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.ST.ParameterSet" BrowseName="1:ParameterSet" ParentNodeId="ns=1;s=Dev.SisTran">
@@ -451,16 +481,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Dev.SisTran</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
@@ -981,10 +1001,9 @@
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
     </References>
     <Value>
-      <ListOfString>
-        <String xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">La</String>
-        <String xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">Cosa</String>
-        <String xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">Funciona</String>
+      <ListOfString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <String>RequestTransport</String>
+        <String>FinishedProduct</String>
       </ListOfString>
     </Value>
   </UAVariable>
@@ -1041,84 +1060,84 @@
     </References>
   </UAObject>
 
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.O.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.ST.Online" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.ST.O.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.ST.Online" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.ST.O.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.ST.Online" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.ST.O.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.ST.Online" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.O.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.ST.Online" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.O.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.ST.Online" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.O.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.ST.Online" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.O.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.ST.Online" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.ST.O.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.ST.Online" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.ST.O.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.ST.O.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.ST.Online" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.Online</Reference>
     </References>
   </UAVariable>
 
@@ -1137,16 +1156,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.Online</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.ST.O.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
@@ -1544,84 +1553,84 @@
 
   <!-- Mixer -->
 
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.Mx1.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx1.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx1.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.Mx1.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=Dev.Mixer1" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
     </References>
   </UAVariable>
 
@@ -1640,16 +1649,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Dev.Mixer1</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
@@ -2214,84 +2213,84 @@
   </UAObject>
 
   <!--Pistón 305-->
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx1.S.P.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.P.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx1.S.Piston" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
     </References>
   </UAVariable>
 
@@ -2310,16 +2309,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.S.Piston</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.P.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
@@ -2892,84 +2881,84 @@
 
   <!--Motor 306-->
 
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx1.S.Motor" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
     </References>
   </UAVariable>
 
@@ -2988,16 +2977,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.S.Motor</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx1.S.M.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
@@ -3630,84 +3609,84 @@
 
   <!-- Mixer -->
 
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.Mx2.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx2.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx2.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.Mx2.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=Dev.Mixer2" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
     </References>
   </UAVariable>
 
@@ -3726,16 +3705,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Dev.Mixer2</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
@@ -4309,84 +4278,84 @@
   </UAObject>
 
   <!--Pistón 505-->
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx2.S.P.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.P.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx2.S.Piston" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.P.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
 
@@ -4405,16 +4374,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.P.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
@@ -4986,84 +4945,84 @@
 
   <!--Motor 506-->
 
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.SerialNumber" BrowseName="1:SerialNumber" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="String">
     <DisplayName>SerialNumber</DisplayName>
     <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="Int32">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.RevisionCounter" BrowseName="1:RevisionCounter" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="Int32">
     <DisplayName>RevisionCounter</DisplayName>
     <Description>An incremental counter indicating the number of times the static data within the Device has been modified</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.Manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="LocalizedText">
     <DisplayName>Manufacturer</DisplayName>
     <Description>Name of the company that manufactured the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="LocalizedText">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.Model" BrowseName="1:Model" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="LocalizedText">
     <DisplayName>Model</DisplayName>
     <Description>Model name of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Piston</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.DeviceManual" BrowseName="1:DeviceManual" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="String">
     <DisplayName>DeviceManual</DisplayName>
     <Description>Address (pathname in the file system or a URL | Web address) of user manual for the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.DeviceRevision" BrowseName="1:DeviceRevision" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="String">
     <DisplayName>DeviceRevision</DisplayName>
     <Description>Overall revision level of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.SoftwareRevision" BrowseName="1:SoftwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="String">
     <DisplayName>SoftwareRevision</DisplayName>
     <Description>Revision level of the software/firmware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.HardwareRevision" BrowseName="1:HardwareRevision" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="String">
     <DisplayName>HardwareRevision</DisplayName>
     <Description>Revision level of the hardware of the device</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="String">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.DeviceClass" BrowseName="1:DeviceClass" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="String">
     <DisplayName>DeviceClass</DisplayName>
     <Description>Indicates in which domain or for what purpose a device is used.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Motor</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="ns=3;i=6244">
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.DeviceHealth" BrowseName="1:DeviceHealth" ParentNodeId="ns=1;s=D.Mx2.S.Motor" DataType="ns=3;i=6244">
     <DisplayName>DeviceHealth</DisplayName>
     <Description>Status of a device as defined by NAMUR Recommendation NE107.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.Mx2.S.Motor</Reference>
     </References>
   </UAVariable>
 
@@ -5082,16 +5041,6 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=3;i=1005</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.S.Motor</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.SerialNumber</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.RevisionCounter</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.Manufacturer</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.Model</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.DeviceManual</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.DeviceRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.SoftwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.HardwareRevision</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.DeviceClass</Reference>
-      <Reference ReferenceType="Organizes">ns=1;s=D.Mx2.S.M.PS.DeviceHealth</Reference>
     </References>
   </UAObject>
 
