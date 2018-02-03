@@ -57,8 +57,8 @@ if __name__ == "__main__":
     xml_files = ["NodeSets/Opc.Ua.Di.NodeSet2.xml",
                  "NodeSets/Opc.Ua.Fdi5.NodeSet2.xml",
                  "NodeSets/Opc.Ua.Model.I.4.0.NodeSet2.xml",
-                 # "NodeSets/Opc.Ua.Model.I.4.0.Mixer1.NodeSet2.xml",
-                 # "NodeSets/Opc.Ua.Model.I.4.0.Mixer2.NodeSet2.xml",
+                 "NodeSets/Opc.Ua.Model.I.4.0.Mixer1.NodeSet2.xml",
+                 "NodeSets/Opc.Ua.Model.I.4.0.Mixer2.NodeSet2.xml",
                  ]
 
     Modules.importer(xml_files, server)
@@ -78,13 +78,7 @@ if __name__ == "__main__":
     idx2 = ns.index("http://fdi-cooperation.com/OPCUA/FDI5/")
     idx3 = ns.index("http://juandavid.univalle/i4o/")
 
-    # server.link_method(server.get_root_node().get_child(
-    #     [str(idx0) + ":Objects", str(idx1) + ":DeviceSet", str(idx3) + ":SistemaTransporte",
-    #      str(idx3) + ":ActionSet", str(idx2) + ":InvokeAction" ]), test)
-    #
-    server.link_method(server.get_root_node().get_child(
-        [str(idx0) + ":Objects", str(idx1) + ":DeviceSet", str(idx3) + ":Mixer1",
-         str(idx3) + ":ActionSet", str(idx3) + ":InvokeAction"]), Modules.test)
+    server.link_method(server.get_node("ns=3;s=D.ST.O.AS.InvokeAction"), Modules.test)
 
     Modules.ns_printer(ns)
 
@@ -119,4 +113,5 @@ if __name__ == "__main__":
 
         embed()
     finally:
+        print("Stopping server")
         server.stop()

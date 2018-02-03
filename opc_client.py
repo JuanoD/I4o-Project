@@ -17,6 +17,7 @@ except ImportError:
 
 from opcua import Client
 from opcua import ua
+from Modules import crud
 
 
 class SubHandler(object):
@@ -28,7 +29,7 @@ class SubHandler(object):
     thread if you need to do such a thing
     """
 
-    def datachange_notification(self, node, val, data):
+    def datachange_notification(self, node, val, var):
         print("Python: New data change event", node, val)
 
     def event_notification(self, event):
@@ -37,41 +38,32 @@ class SubHandler(object):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.WARN)
-    #logger = logging.getLogger("KeepAlive")
-    #logger.setLevel(logging.DEBUG)
+    # logger = logging.getLogger("KeepAlive")
+    # logger.setLevel(logging.DEBUG)
 
-    client = Client("opc.tcp://localhost:4840/freeopcua/server/")
+    client = Client("opc.tcp://localhost:4840/UV/i4o/")
     # client = Client("opc.tcp://admin@localhost:4840/freeopcua/server/") #connect using a user
     try:
         client.connect()
 
-        # Client has a few methods to get proxy to UA nodes that should always be in address space such as Root or Objects
-        root = client.get_root_node()
-        print("Root node is: ", root)
-        objects = client.get_objects_node()
-        print("Objects node is: ", objects)
-
-        # Node objects have methods to read and write node attributes as well as browse or populate address space
-        print("Children of root are: ", root.get_children())
-
-        # get a specific node knowing its node id
-        #var = client.get_node(ua.NodeId(1002, 2))
-        #var = client.get_node("ns=3;i=2002")
-        #print(var)
-        #var.get_data_value() # get value of node as a DataValue object
-        #var.get_value() # get value of node as a python builtin
-        #var.set_value(ua.Variant([23], ua.VariantType.Int64)) #set node value using explicit data type
-        #var.set_value(3.9) # set node value using implicit data type
-
-        # Now getting a variable node using its browse path
-        myvar = root.get_child(["0:Objects", "2:MyObject", "2:MyVariable"])
-        obj = root.get_child(["0:Objects", "2:MyObject"])
-        print("myvar is: ", myvar)
+        # Get a specific node knowing its node id
+        st_actions = client.get_node("ns=3;s=D.ST.O.ActionSet")
+        mx1_actions = client.get_node("ns=3;s=D.Mx1.O.ActionSet")
+        mx2_actions = client.get_node("ns=3;s=D.Mx2.O.ActionSet")
+        st_services = client.get_node("ns=3;s=D.ST.PS.OfferedServices")
+        st_attending = client.get_node("ns=3;s=D.ST.O.PS.NowAttending")
+        mx1_attending = client.get_node("ns=4;s=D.Mx1.O.PS.NowAttending")
+        mx2_attending = client.get_node("ns=5;s=D.Mx2.O.PS.NowAttending")
+        mx1_invoke_action = client.get_node("ns=3;s=D.Mx2.O.AS")
+        # var.get_data_value() # get value of node as a DataValue object
+        # var.get_value() # get value of node as a python builtin
+        # var.set_value(ua.Variant([23], ua.VariantType.Int64)) #set node value using explicit data type
+        # var.set_value(3.9) # set node value using implicit data type
 
         # subscribing to a variable node
         handler = SubHandler()
         sub = client.create_subscription(500, handler)
-        handle = sub.subscribe_data_change(myvar)
+        handle = sub.subscribe_data_change(st_services)
         time.sleep(0.1)
 
         # we can also subscribe to events from server
@@ -80,9 +72,17 @@ if __name__ == "__main__":
         # sub.delete()
 
         # calling a method on server
-        res = obj.call_method("2:multiply", 3, "klk")
+        res = st_actions.call_method("3:InvokeAction", "3", "klk")
         print("method result is: ", res)
+        print(st_services.get_value())
+        # embed()  # For testing
+        while True:
+            if st_attending.get_value() == 0:
+                if mx1_attending.get_value() == 0:
+                    argumentos = crud.get_item("Mixer1")
+                    st_actions.call_method("3:InvokeAction", "3", "klk")
+                    print("Holi")
 
-        embed()
+
     finally:
         client.disconnect()
