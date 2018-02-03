@@ -1,6 +1,7 @@
-from .NSO import ns_printer, importer
-from .NodeClasses import DiDevicesParameterSet, DeviceDi
-from .Methods import test
+from .tools import ns_printer, importer, argstr, argget
+from .node_classes import DiDevicesParameterSet, DeviceDi
+from .methods_to_mirror import test
+# from .pins import P, ControlMezcladora
 """
 Remember to use one of this ways for getting nodes:
     myobject1_type_nodeid = ua.NodeId.from_string('ns=%d;i=2' % idx)

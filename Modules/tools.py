@@ -29,3 +29,29 @@ def ns_printer(ns):
     print("Los namespace son:")
     for nsn, nsu in enumerate(ns):
         print("    {}: {}".format(nsn, nsu))
+
+
+def argstr(item):
+    argl = ""
+    for i in item:
+        argl += "{},".format(str(i))
+    argl = argl[:-1]
+    return argl
+
+def argget(txt):
+    txt = txt.split(',')
+    list = []
+    for i in txt:
+        if try_int(i):
+            list.append(int(i))
+        else:
+            list.append(i)
+    return list
+
+
+def try_int(i):
+    try:
+        int(i)
+        return True
+    except ValueError:
+        return False
