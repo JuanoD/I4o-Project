@@ -734,6 +734,12 @@
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.O.ParameterSet</Reference>
     </References>
+    <Value>
+      <ListOfString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <String>Mixing</String>
+        <String>SlowMixing</String>
+      </ListOfString>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;s=D.Mx2.O.PS.OfflineServices" BrowseName="1:OfflineServices" ParentNodeId="ns=1;s=D.Mx2.O.ParameterSet" DataType="String" ValueRank="1">
     <DisplayName>OfflineServices</DisplayName>
@@ -758,20 +764,14 @@
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.O.ParameterSet</Reference>
     </References>
+    <Value>
+      <Int32>0</Int32>
+    </Value>
   </UAVariable>
 
-  <UAObject NodeId="ns=1;s=D.Mx2.O.AS.AlternatingMixing" BrowseName="1:AlternatingMixing">
-    <DisplayName>AlternatingMixing</DisplayName>
+  <UAObject NodeId="ns=1;s=D.Mx2.O.AS.Mixing" BrowseName="1:Mixing">
+    <DisplayName>Mixing</DisplayName>
     <Description>It waits for the transport system to elevate the painting, then, it rotates the motor forward and backwards to create an alternating mixing (Like when you mix the chocolate).</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.O.ActionSet</Reference>
-    </References>
-  </UAObject>
-
-  <UAObject NodeId="ns=1;s=D.Mx2.O.AS.ConstantMixing" BrowseName="1:ConstantMixing">
-    <DisplayName>ConstantMixing</DisplayName>
-    <Description>It waits for the transport system to elevate the painting, then, it rotates the motor in one direction.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.O.ActionSet</Reference>
@@ -780,7 +780,7 @@
 
   <UAObject NodeId="ns=1;s=D.Mx2.O.AS.SlowMixing" BrowseName="1:SlowMixing">
     <DisplayName>SlowMixing</DisplayName>
-    <Description>It waits for the transport system to elevate the painting, then, it rotates the motor in one direction.</Description>
+    <Description>Same as Mixing, it just offers speed control.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.O.ActionSet</Reference>

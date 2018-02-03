@@ -1025,7 +1025,23 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;s=D.ST.PS.NowAttending" BrowseName="1:NowAttending" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="Int32">
     <DisplayName>NowAttending</DisplayName>
-    <Description>ID of the product being attended by the machine.</Description>
+    <Description>ID of the product being attended by the machine. 0 Means no product is being attended.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.ST.PS.Target" BrowseName="1:Target" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+    <DisplayName>Target</DisplayName>
+    <Description>Mixer target.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.ST.PS.Action" BrowseName="1:Action" ParentNodeId="ns=1;s=D.ST.ParameterSet" DataType="String">
+    <DisplayName>Action</DisplayName>
+    <Description>ActionToPerform.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.ParameterSet</Reference>
@@ -1200,11 +1216,246 @@
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=2;i=21</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.Online</Reference>
-      <Reference ReferenceType="HasComponent">ns=2;i=184</Reference>
-      <Reference ReferenceType="HasComponent">ns=2;i=187</Reference>
-      <Reference ReferenceType="HasComponent">ns=2;i=190</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.ST.O.AS.InvokeAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.ST.O.AS.RespondAction</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=D.ST.O.AS.AbortAction</Reference>
     </References>
   </UAObject>
+
+  <UAMethod NodeId="ns=1;s=D.ST.O.AS.InvokeAction" BrowseName="1:InvokeAction" ParentNodeId="ns=1;s=D.ST.O.ActionSet" MethodDeclarationId="ns=2;i=22">
+    <DisplayName>InvokeAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.ST.O.AS.InvokeAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.ST.O.AS.InvokeAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.O.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.ST.O.AS.InvokeAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.ST.O.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionName</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>MethodArguments</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.ST.O.AS.InvokeAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.ST.O.AS.InvokeAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.AS.InvokeAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>InvokeActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.ST.O.AS.RespondAction" BrowseName="1:RespondAction" ParentNodeId="ns=1;s=D.ST.O.ActionSet" MethodDeclarationId="ns=2;i=25">
+    <DisplayName>RespondAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.ST.O.AS.RespondAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.ST.O.AS.RespondAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.O.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.ST.O.AS.RespondAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.ST.O.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Response</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.ST.O.AS.RespondAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.ST.O.AS.RespondAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.AS.RespondAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>RespondActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;s=D.ST.O.AS.AbortAction" BrowseName="1:AbortAction" ParentNodeId="ns=1;s=D.ST.O.ActionSet" MethodDeclarationId="ns=2;i=28">
+    <DisplayName>AbortAction</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.ST.O.AS.AbortAction.IArgs</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=D.ST.O.AS.AbortAction.OArgs</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.O.ActionSet</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;s=D.ST.O.AS.AbortAction.IArgs" BrowseName="InputArguments" ParentNodeId="ns=1;s=D.ST.O.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ActionNodeId</Name>
+              <DataType>
+                <Identifier>i=17</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.ST.O.AS.AbortAction.OArgs" BrowseName="OutputArguments" ParentNodeId="ns=1;s=D.ST.O.AS.AbortAction" DataType="i=296" ValueRank="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=D.ST.O.AS.AbortAction</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>AbortActionError</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
 
   <UAObject NodeId="ns=1;s=D.ST.O.Lock" BrowseName="1:Lock" ParentNodeId="ns=1;s=D.ST.Online">
     <DisplayName>Lock</DisplayName>
@@ -1437,6 +1688,12 @@
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
     </References>
+    <Value>
+      <ListOfString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <String>RequestTransport</String>
+        <String>FinishedProduct</String>
+      </ListOfString>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;s=D.ST.O.PS.OfflineServices" BrowseName="1:OfflineServices" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String" ValueRank="1">
     <DisplayName>OfflineServices</DisplayName>
@@ -1457,6 +1714,25 @@
   <UAVariable NodeId="ns=1;s=D.ST.O.PS.NowAttending" BrowseName="1:NowAttending" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="Int32">
     <DisplayName>NowAttending</DisplayName>
     <Description>ID of the product being attended by the machine.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+    </References>
+    <Value>
+      <Int32>0</Int32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.ST.O.PS.Target" BrowseName="1:Target" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+    <DisplayName>Target</DisplayName>
+    <Description>Mixer target.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.ST.O.PS.Action" BrowseName="1:Action" ParentNodeId="ns=1;s=D.ST.O.ParameterSet" DataType="String">
+    <DisplayName>Action</DisplayName>
+    <Description>ActionToPerform.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.ST.O.ParameterSet</Reference>
@@ -2168,6 +2444,11 @@
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.ParameterSet</Reference>
     </References>
+    <Value>
+      <ListOfString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <String>Mixing</String>
+      </ListOfString>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;s=D.Mx1.PS.OfflineServices" BrowseName="1:OfflineServices" ParentNodeId="ns=1;s=D.Mx1.ParameterSet" DataType="String" ValueRank="1">
     <DisplayName>OfflineServices</DisplayName>
@@ -2194,18 +2475,9 @@
     </References>
   </UAVariable>
 
-  <UAObject NodeId="ns=1;s=D.Mx1.AS.AlternatingMixing" BrowseName="1:AlternatingMixing">
-    <DisplayName>AlternatingMixing</DisplayName>
+  <UAObject NodeId="ns=1;s=D.Mx1.AS.Mixing" BrowseName="1:Mixing">
+    <DisplayName>Mixing</DisplayName>
     <Description>It waits for the transport system to elevate the painting, then, it rotates the motor forward and backwards to create an alternating mixing (Like when you mix the chocolate).</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;s=BO.Action.ServiceActionType</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.ActionSet</Reference>
-    </References>
-  </UAObject>
-
-  <UAObject NodeId="ns=1;s=D.Mx1.AS.ConstantMixing" BrowseName="1:ConstantMixing">
-    <DisplayName>ConstantMixing</DisplayName>
-    <Description>It waits for the transport system to elevate the painting, then, it rotates the motor in one direction.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=1;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.ActionSet</Reference>
@@ -4224,6 +4496,12 @@
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.ParameterSet</Reference>
     </References>
+    <Value>
+      <ListOfString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <String>Mixing</String>
+        <String>SlowMixing</String>
+      </ListOfString>
+    </Value>
   </UAVariable>
   <UAVariable NodeId="ns=1;s=D.Mx2.PS.OfflineServices" BrowseName="1:OfflineServices" ParentNodeId="ns=1;s=D.Mx2.ParameterSet" DataType="String" ValueRank="1">
     <DisplayName>OfflineServices</DisplayName>
@@ -4250,18 +4528,9 @@
     </References>
   </UAVariable>
 
-  <UAObject NodeId="ns=1;s=D.Mx2.AS.AlternatingMixing" BrowseName="1:AlternatingMixing">
-    <DisplayName>AlternatingMixing</DisplayName>
+  <UAObject NodeId="ns=1;s=D.Mx2.AS.Mixing" BrowseName="1:Mixing">
+    <DisplayName>Mixing</DisplayName>
     <Description>It waits for the transport system to elevate the painting, then, it rotates the motor forward and backwards to create an alternating mixing (Like when you mix the chocolate).</Description>
-    <References>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;s=BO.Action.ServiceActionType</Reference>
-      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.ActionSet</Reference>
-    </References>
-  </UAObject>
-
-  <UAObject NodeId="ns=1;s=D.Mx2.AS.ConstantMixing" BrowseName="1:ConstantMixing">
-    <DisplayName>ConstantMixing</DisplayName>
-    <Description>It waits for the transport system to elevate the painting, then, it rotates the motor in one direction.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=1;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.ActionSet</Reference>
@@ -4270,7 +4539,7 @@
 
   <UAObject NodeId="ns=1;s=D.Mx2.AS.SlowMixing" BrowseName="1:SlowMixing">
     <DisplayName>SlowMixing</DisplayName>
-    <Description>It waits for the transport system to elevate the painting, then, it rotates the motor in one direction.</Description>
+    <Description>Same as Mixing, but this offers speed control.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=1;s=BO.Action.ServiceActionType</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.ActionSet</Reference>
