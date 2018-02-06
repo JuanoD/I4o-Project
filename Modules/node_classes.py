@@ -58,7 +58,7 @@ class DeviceDi(UaObject):
     """
     Device class for testing childs
     """
-    def __init__(self, opcua_server, ua_node, dev_type):
+    def __init__(self, opcua_server, ua_node):
         self.me = ua_node
         self.idx = self.me.nodeid.NamespaceIndex
         # properties and variables; must mirror UA model (based on browsename!)
@@ -75,53 +75,128 @@ class DeviceDi(UaObject):
 
         super().__init__(opcua_server, ua_node)
 
-        if dev_type is "ST":
-            self.ParameterSet = SistemaTransporte(
-                opcua_server,
-                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
-            )
-        elif dev_type is "Mx":  # TODO
-            self.ParameterSet = Mixer(
-                opcua_server,
-                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
-            )
-        elif dev_type is "M":  # TODO
-            self.ParameterSet = Motor(
-                opcua_server,
-                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
-            )
-        elif dev_type is "P":  # TODO
-            self.ParameterSet = Pistn(
-                opcua_server,
-                ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
-            )
-        else:
-            pass
 
-
-class DiDevicesParameterSet(UaObject):
-    """
-    Definition of OPC UA object which represents a object to be mirrored in python
-    This class mirrors it's UA counterpart and semi-configures itself according to the UA model (generally from XML)
-    """
-    def __init__(self, opcua_server, ua_node):
-        # init the UaObject super class to connect the python object to the UA object
-        super().__init__(opcua_server, ua_node)
-
-        # local values only for use inside python
-        self.testval = 'python only'
-
-        # If the object has other objects as children it is best to search by type and instantiate more
-        # mirrored python classes so that your UA object tree matches your python object tree
-
-        # ADD CUSTOM OBJECT INITIALIZATION BELOW
-        # find children by type and instantiate them as sub-objects of this class
-        # NOT PART OF THIS EXAMPLE
-
-
-class SistemaTransporte(DiDevicesParameterSet):
+class SistemaTransporte(DeviceDi):
     def __init__(self, opcua_server, ua_node):
         self.me = ua_node
         self.idx = self.me.nodeid.NamespaceIndex
-        self.OnlineServices = self.me.get_child(["{}:OfferedServices".format(self.idx)]).get_value()
+
         super().__init__(opcua_server, ua_node)
+        self.ParameterSet = self.SistemaTransporteParameterSet(
+            opcua_server,
+            ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
+        )
+
+    class SistemaTransporteParameterSet(UaObject):
+        def __init__(self, opcua_server, ua_node):
+            self.me = ua_node
+            self.idx = self.me.nodeid.NamespaceIndex
+            self.OfferedServices = self.me.get_child(["{}:OfferedServices".format(self.idx)]).get_value()
+            self.NowAttending = self.me.get_child(["{}:NowAttending".format(self.idx)]).get_value()
+            self.OfflineServices = self.me.get_child(["{}:OfflineServices".format(self.idx)]).get_value()
+            self.UsesBeforeMaintenance = self.me.get_child(["{}:UsesBeforeMaintenance".format(self.idx)]).get_value()
+            self.Action = self.me.get_child(["{}:Action".format(self.idx)]).get_value()
+            self.Target = self.me.get_child(["{}:Target".format(self.idx)]).get_value()
+
+            super().__init__(opcua_server, ua_node)
+
+
+class Mixer(DeviceDi):
+    def __init__(self, opcua_server, ua_node):
+        self.me = ua_node
+        self.idx = self.me.nodeid.NamespaceIndex
+
+        super().__init__(opcua_server, ua_node)
+
+        self.SubDevices = self.MxSubDevices(
+            opcua_server,
+            ua_node.get_child(["{}:SubDevices".format(ua_node.nodeid.NamespaceIndex)]),
+        )
+        self.ParameterSet = self.MxParams(
+            opcua_server,
+            ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)])
+        )
+
+    class MxParams(UaObject):
+        def __init__(self, opcua_server, ua_node):
+            self.me = ua_node
+            self.idx = self.me.nodeid.NamespaceIndex
+            self.OfferedServices = self.me.get_child(["{}:OfferedServices".format(self.idx)]).get_value()
+            self.NowAttending = self.me.get_child(["{}:NowAttending".format(self.idx)]).get_value()
+            self.OfflineServices = self.me.get_child(["{}:OfflineServices".format(self.idx)]).get_value()
+            self.UsesBeforeMaintenance = self.me.get_child(["{}:UsesBeforeMaintenance".format(self.idx)]).get_value()
+
+            super().__init__(opcua_server, ua_node)
+
+    class MxSubDevices(UaObject):
+        def __init__(self, opcua_server, ua_node):
+            super().__init__(opcua_server, ua_node)
+
+            self.me = ua_node
+            self.idx = self.me.nodeid.NamespaceIndex
+            self.Motor = self.Motr(
+                opcua_server,
+                ua_node.get_child(["{}:Motor".format(ua_node.nodeid.NamespaceIndex)]),
+            )
+            self.Piston = self.Pistn(
+                opcua_server,
+                ua_node.get_child(["{}:Piston".format(ua_node.nodeid.NamespaceIndex)]),
+            )
+
+        class Motr(DeviceDi):
+            def __init__(self, opcua_server, ua_node):
+                super().__init__(opcua_server, ua_node)
+
+                self.me = ua_node
+                self.idx = self.me.nodeid.NamespaceIndex
+                self.ParameterSet = self.MotorPS(
+                    opcua_server,
+                    ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),
+                )
+
+            class MotorPS(UaObject):
+                def __init__(self, opcua_server, ua_node):
+                    self.me = ua_node
+                    self.idx = self.me.nodeid.NamespaceIndex
+                    self.Duty = self.me.get_child(["{}:Duty".format(self.idx)]).get_value()
+                    self.IsRunning = self.me.get_child(["{}:IsRunning".format(self.idx)]).get_value()
+                    self.IsRunningForward = self.me.get_child(["{}:IsRunningForward".format(self.idx)]).get_value()
+
+                    super().__init__(opcua_server, ua_node)
+
+        class Pistn(DeviceDi):
+            def __init__(self, opcua_server, ua_node):
+                super().__init__(opcua_server, ua_node)
+                self.me = ua_node
+                self.idx = self.me.nodeid.NamespaceIndex
+                self.ParameterSet = self.PistonPS(
+                    opcua_server,
+                    ua_node.get_child(["{}:ParameterSet".format(ua_node.nodeid.NamespaceIndex)]),)
+
+            class PistonPS(UaObject):
+                def __init__(self, opcua_server, ua_node):
+                    self.me = ua_node
+                    self.idx = self.me.nodeid.NamespaceIndex
+                    self.IsExtended = self.me.get_child(["{}:IsExtended".format(self.idx)]).get_value()
+
+                    super().__init__(opcua_server, ua_node)
+
+
+# class DiDevicesParameterSet(UaObject):
+#     """
+#     Definition of OPC UA object which represents a object to be mirrored in python
+#     This class mirrors it's UA counterpart and semi-configures itself according to the UA model (generally from XML)
+#     """
+#     def __init__(self, opcua_server, ua_node):
+#         # init the UaObject super class to connect the python object to the UA object
+#         super().__init__(opcua_server, ua_node)
+#
+#         # local values only for use inside python
+#         self.testval = 'python only'
+#
+#         # If the object has other objects as children it is best to search by type and instantiate more
+#         # mirrored python classes so that your UA object tree matches your python object tree
+#
+#         # ADD CUSTOM OBJECT INITIALIZATION BELOW
+#         # find children by type and instantiate them as sub-objects of this class
+#         # NOT PART OF THIS EXAMPLE
