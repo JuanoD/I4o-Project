@@ -48,18 +48,26 @@ if __name__ == "__main__":
     try:
         client.connect()
 
+        ns = client.get_namespace_array()
+        uax = str(ns.index("http://opcfoundation.org/UA/"))
+        dix = str(ns.index("http://opcfoundation.org/UA/DI/"))
+        fdix = str(ns.index("http://fdi-cooperation.com/OPCUA/FDI5/"))
+        i4ox = str(ns.index("http://juandavid.univalle/i4o/"))
+        m1x = str(ns.index("http://juandavid.univalle/i4o/Mixer1/"))
+        m2x = str(ns.index("http://juandavid.univalle/i4o/Mixer2/"))
+
         # Get a specific node knowing its node id
-        st_actions = client.get_node("ns=3;s=D.ST.O.ActionSet")
-        mx1_actions = client.get_node("ns=4;s=D.Mx1.O.ActionSet")
-        mx2_actions = client.get_node("ns=5;s=D.Mx2.O.ActionSet")
+        st_actions = client.get_node("ns="+i4ox+";s=D.ST.O.ActionSet")
+        mx1_actions = client.get_node("ns="+m1x+";s=D.Mx1.O.ActionSet")
+        mx2_actions = client.get_node("ns="+m2x+";s=D.Mx2.O.ActionSet")
 
-        st_services = client.get_node("ns=3;s=D.ST.O.PS.OfferedServices")
-        mx1_services = client.get_node("ns=4;s=D.Mx1.O.PS.OfferedServices")
-        mx2_services = client.get_node("ns=5;s=D.Mx2.O.PS.OfferedServices")
+        st_services = client.get_node("ns="+i4ox+";s=D.ST.O.PS.OfferedServices")
+        mx1_services = client.get_node("ns="+m1x+";s=D.Mx1.O.PS.OfferedServices")
+        mx2_services = client.get_node("ns="+m2x+";s=D.Mx2.O.PS.OfferedServices")
 
-        st_attending = client.get_node("ns=3;s=D.ST.O.PS.NowAttending")
-        mx1_attending = client.get_node("ns=4;s=D.Mx1.O.PS.NowAttending")
-        mx2_attending = client.get_node("ns=5;s=D.Mx2.O.PS.NowAttending")
+        st_attending = client.get_node("ns="+i4ox+";s=D.ST.O.PS.NowAttending")
+        mx1_attending = client.get_node("ns="+m1x+";s=D.Mx1.O.PS.NowAttending")
+        mx2_attending = client.get_node("ns="+m2x+";s=D.Mx2.O.PS.NowAttending")
         # var.get_data_value() # get value of node as a DataValue object
         # var.get_value() # get value of node as a python builtin
         # var.set_value(ua.Variant([23], ua.VariantType.Int64)) #set node value using explicit data type
