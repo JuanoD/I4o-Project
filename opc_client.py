@@ -1,6 +1,7 @@
 import sys
 sys.path.insert(0, "..")
 import logging
+import threading
 import time
 
 try:
@@ -17,7 +18,7 @@ except ImportError:
 
 from opcua import Client
 from opcua import ua
-from Modules import crud
+from Modules import crud, argstr
 
 
 class SubHandler(object):
@@ -37,6 +38,7 @@ class SubHandler(object):
 
 
 if __name__ == "__main__":
+    time.sleep(1)  # Time must be set here, so you can run server first
     logging.basicConfig(level=logging.WARN)
     # logger = logging.getLogger("KeepAlive")
     # logger.setLevel(logging.DEBUG)
@@ -48,13 +50,16 @@ if __name__ == "__main__":
 
         # Get a specific node knowing its node id
         st_actions = client.get_node("ns=3;s=D.ST.O.ActionSet")
-        mx1_actions = client.get_node("ns=3;s=D.Mx1.O.ActionSet")
-        mx2_actions = client.get_node("ns=3;s=D.Mx2.O.ActionSet")
-        st_services = client.get_node("ns=3;s=D.ST.PS.OfferedServices")
+        mx1_actions = client.get_node("ns=4;s=D.Mx1.O.ActionSet")
+        mx2_actions = client.get_node("ns=5;s=D.Mx2.O.ActionSet")
+
+        st_services = client.get_node("ns=3;s=D.ST.O.PS.OfferedServices")
+        mx1_services = client.get_node("ns=4;s=D.Mx1.O.PS.OfferedServices")
+        mx2_services = client.get_node("ns=5;s=D.Mx2.O.PS.OfferedServices")
+
         st_attending = client.get_node("ns=3;s=D.ST.O.PS.NowAttending")
         mx1_attending = client.get_node("ns=4;s=D.Mx1.O.PS.NowAttending")
         mx2_attending = client.get_node("ns=5;s=D.Mx2.O.PS.NowAttending")
-        mx1_invoke_action = client.get_node("ns=3;s=D.Mx2.O.AS")
         # var.get_data_value() # get value of node as a DataValue object
         # var.get_value() # get value of node as a python builtin
         # var.set_value(ua.Variant([23], ua.VariantType.Int64)) #set node value using explicit data type
@@ -72,17 +77,37 @@ if __name__ == "__main__":
         # sub.delete()
 
         # calling a method on server
-        res = st_actions.call_method("3:InvokeAction", "3", "klk")
-        print("method result is: ", res)
-        print(st_services.get_value())
-        # embed()  # For testing
-        while True:
-            if st_attending.get_value() == 0:
-                if mx1_attending.get_value() == 0:
-                    argumentos = crud.get_item("Mixer1")
-                    st_actions.call_method("3:InvokeAction", "3", "klk")
-                    print("Holi")
 
+        # print(st_services.get_value())
 
+        def mx1_search():
+            while True:
+                if st_attending.get_value() == 0:
+                    if mx1_attending.get_value() == 0:
+                        arguments = crud.get_item("Mixer1")
+                        if arguments:
+                            args = argstr(arguments)
+                            mx1_actions.call_method("4:InvokeAction", 'Called for Mixer1', args)
+
+        def mx2_search():
+            while True:
+                if st_attending.get_value() == 0:
+                    if mx2_attending.get_value() == 0:
+                        arguments = crud.get_item("Mixer2")
+                        if arguments:
+                            args = argstr(arguments)
+                            mx2_actions.call_method("5:InvokeAction", 'Called for Mixer2', args)
+
+        mezcladora1 = threading.Thread(target=mx1_search,
+                                       name='Mixing1',
+                                       args=())
+        mezcladora2 = threading.Thread(target=mx2_search,
+                                       name='Mixing2',
+                                       args=())
+        mezcladora1.setDaemon(True)
+        mezcladora2.setDaemon(True)
+        mezcladora1.start()
+        mezcladora2.start()
+        embed()
     finally:
         client.disconnect()
