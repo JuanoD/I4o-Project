@@ -60,7 +60,7 @@
   <!-- Mixer 2 -->
 
 
-  <UAObject NodeId="ns=1;s=D.Mx2.Online" BrowseName="1:Online">
+  <UAObject NodeId="ns=1;s=D.Mx2.Online" BrowseName="1:Online" ParentNodeId="ns=2;s=Dev.Mixer2">
     <DisplayName>Online</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.D.MezcladoraType</Reference>
@@ -69,7 +69,7 @@
     </References>
   </UAObject>
 
-  <UAObject NodeId="ns=1;s=D.Mx2.O.SubDevices" BrowseName="1:SubDevices">
+  <UAObject NodeId="ns=1;s=D.Mx2.O.SubDevices" BrowseName="1:SubDevices" ParentNodeId="ns=1;s=D.Mx2.Online">
     <DisplayName>SubDevices</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=4;i=1004</Reference>
@@ -110,7 +110,7 @@
     </References>
   </UAObject>
 
-  <UAObject NodeId="ns=1;s=D.Mx2.O.S.Motor" BrowseName="1:Motor">
+  <UAObject NodeId="ns=1;s=D.Mx2.O.S.Motor" BrowseName="1:Motor" ParentNodeId="ns=1;s=D.Mx2.O.SubDevices">
     <DisplayName>MotorMx2</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">ns=2;s=BO.TE.D.MotorType</Reference>
@@ -2120,4 +2120,14 @@
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.O.S.M.ParameterSet</Reference>
     </References>
   </UAVariable>
+
+  <UAVariable NodeId="ns=1;s=D.Mx2.O.S.M.PS.IsRunning" BrowseName="1:IsRunning" ParentNodeId="ns=1;s=D.Mx2.O.S.M.ParameterSet" DataType="Boolean">
+    <DisplayName>IsRunning</DisplayName>
+    <Description>If TRUE, the motor is working right now.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.O.S.M.ParameterSet</Reference>
+    </References>
+  </UAVariable>
+
 </UANodeSet>

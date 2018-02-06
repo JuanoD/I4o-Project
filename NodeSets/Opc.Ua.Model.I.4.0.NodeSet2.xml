@@ -1287,25 +1287,9 @@
           </TypeId>
           <Body>
             <Argument>
-              <Name>ActionNodeId</Name>
+              <Name>MethodCall</Name>
               <DataType>
-                <Identifier>i=17</Identifier>
-              </DataType>
-              <ValueRank>-1</ValueRank>
-              <ArrayDimensions />
-              <Description p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
-            </Argument>
-          </Body>
-        </ExtensionObject>
-        <ExtensionObject>
-          <TypeId>
-            <Identifier>i=297</Identifier>
-          </TypeId>
-          <Body>
-            <Argument>
-              <Name>InvokeActionError</Name>
-              <DataType>
-                <Identifier>i=6</Identifier>
+                <Identifier>i=12</Identifier>
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
@@ -3819,6 +3803,15 @@
     </References>
   </UAVariable>
 
+  <UAVariable NodeId="ns=1;s=D.Mx1.S.M.PS.IsRunning" BrowseName="1:IsRunning" ParentNodeId="ns=1;s=D.Mx1.S.M.ParameterSet" DataType="Boolean">
+    <DisplayName>IsRunning</DisplayName>
+    <Description>If TRUE, the motor is working right now.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx1.S.M.ParameterSet</Reference>
+    </References>
+  </UAVariable>
+
   <!-- Mixer 2 -->
 
 
@@ -5874,6 +5867,14 @@
   <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.IsRunningForward" BrowseName="1:IsRunningForward" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="Boolean">
     <DisplayName>IsRunningForward</DisplayName>
     <Description>If TRUE, the vector defining the torque of the motor is pointing outwards.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=D.Mx2.S.M.PS.IsRunning" BrowseName="1:IsRunning" ParentNodeId="ns=1;s=D.Mx2.S.M.ParameterSet" DataType="Boolean">
+    <DisplayName>IsRunning</DisplayName>
+    <Description>If TRUE, the motor is working right now.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=D.Mx2.S.M.ParameterSet</Reference>
